@@ -11,23 +11,23 @@ import java.math.BigDecimal;
  * @author naperez
  */
 public class Libro {
-    private int isbn;
+    private String isbn;
     private String titulo;
     private BigDecimal precio;
     private String genero;
 
-    public Libro(int isbn, String titulo, BigDecimal precio, String genero) {
+    public Libro(String isbn, String titulo, BigDecimal precio, String genero) {
         this.isbn = isbn;
         this.titulo = titulo;
         this.precio = precio;
         this.genero = genero;
     }
 
-    public int getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
@@ -59,12 +59,11 @@ public class Libro {
     public String toString() {
         return "Libro{" + "isbn=" + isbn + ", titulo=" + titulo + ", precio=" + precio + ", genero=" + genero + '}';
     }
+
     
     
     
-    
-    
-}
+  }
 
     
 
