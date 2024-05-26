@@ -23,9 +23,9 @@ public class LibroDAO {
 
             while (rs.next()) {
                 Libro libro = new Libro(
-                    rs.getInt("ISBN"),
+                    rs.getString("ISBN"),
                     rs.getString("Titulo"),                    
-                    rs.getBigDecimal("Precio"),
+                    rs.getBigDecimal("Pecio"),
                     rs.getString("Genero")
                 );
                 libros.add(libro);
