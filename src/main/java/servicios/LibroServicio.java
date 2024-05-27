@@ -19,6 +19,10 @@ public class LibroServicio {
     public List<Libro> obtenerLibros() throws SQLException {
         return libroDAO.obtenerLibros();
     }
+    
+   public void insertarLibro(Libro libro) throws SQLException {
+        libroDAO.insertarLibro(libro);
+    }
 
     // Otros métodos de lógica de negocio pueden ser añadidos aquí.
 }
