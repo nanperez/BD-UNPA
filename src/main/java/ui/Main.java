@@ -23,6 +23,7 @@ import servicios.LibroServicio;
 public class Main {
     public static void main(String[] args) {
         AutoresServicio autorService = new AutoresServicio();
+        /*
         try {
             List<Autores> autores = autorService.obtenerAutores();
             for (Autores a : autores) {
@@ -31,10 +32,11 @@ public class Main {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    */
+        Autores nuevoAutor = new Autores(4,"Nancy Perez","Mexicana");
+        autorService.insertarAutor(nuevoAutor);
     
-    
-    
-    
+       // autorService.eliminarAutor(4);
     }
     
     
