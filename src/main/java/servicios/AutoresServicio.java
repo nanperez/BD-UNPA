@@ -26,6 +26,10 @@ public class AutoresServicio {
         return autoresDAO.obtenerAutores();
     }
     
+    public void insertarAutor(Autores autor){
+        autoresDAO.insertarAutor(autor);
+    }
+    
     
     
 }
