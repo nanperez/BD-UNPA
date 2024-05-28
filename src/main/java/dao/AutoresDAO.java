@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelos.Autores;
 
 /**
@@ -17,13 +19,13 @@ import modelos.Autores;
  * @author naperez
  */
 public class AutoresDAO {
-
+   
     public List<Autores> obtenerAutores() throws SQLException {
         List<Autores> autores = new ArrayList<>();
         String sql = "SELECT * FROM Autores";
-        try (Connection conn = Conexion.getConnection();
+            Connection conn = Conexion.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+             ResultSet rs = stmt.executeQuery(); 
 
             while (rs.next()) {
                 Autores autor = new Autores(
@@ -33,10 +35,36 @@ public class AutoresDAO {
                 );
                 autores.add(autor);
             }
-        }
+        
 
         return autores;
         
     }
+    
+    public void insertarAutor(Autores autor){
+        try {
+            String sql ="INSERT INTO Autores (INE,Nombre,Nacionalidad) VALUES (?,?,?)";
+            Connection conn = Conexion.getConnection();
+            PreparedStatement  st = conn.prepareStatement(sql);
+            
+            st.setInt(1, autor.getINE());
+            st.setString(2, autor.getNombre());
+            st.setString(3, autor.getNacionalidad());
+            
+            st.executeUpdate();
+            System.out.println("Registro agregado correctamente");
+        } catch (SQLException ex) {
+            System.out.println("Error al insertar autor:"+ex.getMessage());
+        }
+        
+                
+        
+        
+        
+    }
+    
+    
+    
+  
     
 }
