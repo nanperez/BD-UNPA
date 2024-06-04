@@ -64,6 +64,50 @@ public class AutoresDAO {
     }
     
     
+    public void eliminarAutor(int INE){
+        
+        try {
+            String sql = "DELETE FROM Autores WHERE INE = ?";
+            Connection conn = Conexion.getConnection();
+            PreparedStatement  st = conn.prepareStatement(sql);
+            
+            st.setInt(1, INE);
+            st.executeUpdate();
+            System.out.println("Se eliminó");
+        } catch (SQLException ex) {
+            System.out.println("ERROR"+ex.getMessage());
+            
+        }
+        
+    
+    }
+    
+    
+    public void actualizarAutor(Autores autor){
+        int ine = autor.getINE();
+        try {
+            String sql = "UPDATE Autores SET INE = ?, Nombre = ?, Nacionalidad = ? WHERE INE ='"+ ine +"'";
+            Connection conn = Conexion.getConnection();
+            PreparedStatement  st = conn.prepareStatement(sql);
+            
+            
+            st.setInt(1, ine);
+            st.setString(2, autor.getNombre());
+            st.setString(3, autor.getNacionalidad());
+            
+            st.executeUpdate();
+            System.out.println("Actualización correcta");
+        } catch (SQLException ex) {
+            System.out.println("NO se realizó actualización"+ex.getMessage());
+            
+            
+        }
+        
+        
+        
+    }
+    
+    
     
   
     
