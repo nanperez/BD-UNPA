@@ -30,6 +30,14 @@ public class AutoresServicio {
         autoresDAO.insertarAutor(autor);
     }
     
+    public void eliminarAutor(int INE){
+        autoresDAO.eliminarAutor(INE);
+    }
+    
+    public void actualizarAutor(Autores autor){
+        autoresDAO.actualizarAutor(autor);
+    }
+    
     
     
 }
