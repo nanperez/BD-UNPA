@@ -86,7 +86,8 @@ public class AutoresDAO {
     public void actualizarAutor(Autores autor){
         int ine = autor.getINE();
         try {
-            String sql = "UPDATE Autores SET INE = ?, Nombre = ?, Nacionalidad = ? WHERE INE ='"+ ine +"'";
+            String sql = "UPDATE Autores SET INE = ?, Nombre = ?, Nacionalidad = ?"
+                    + " WHERE INE ='"+ ine +"'";
             Connection conn = Conexion.getConnection();
             PreparedStatement  st = conn.prepareStatement(sql);
             
@@ -106,7 +107,34 @@ public class AutoresDAO {
         
         
     }
+
     
+    
+    public List<Autores> buscarAutoresPorNombre(String nombre) {
+        List<Autores> autores = new ArrayList<>();
+        String sql = "SELECT * FROM Autores WHERE nombre LIKE ?";
+
+        try (Connection conn = Conexion.getConnection();
+             PreparedStatement st = conn.prepareStatement(sql)) {
+
+            st.setString(1, "%" + nombre + "%");
+            ResultSet resultSet = st.executeQuery();
+
+            while (resultSet.next()) {
+                Autores autor = new Autores(
+                    resultSet.getInt("INE"),
+                    resultSet.getString("Nombre"),
+                    resultSet.getString("Nacionalidad")
+                );
+                autores.add(autor);
+            }
+
+            resultSet.close();
+        } catch (SQLException e) {
+            e.printStackTrace(); // Manejo básico de excepciones, puede mejorarse según necesidades
+        }
+        return autores;
+    }
     
     
   
