@@ -38,6 +38,10 @@ public class AutoresServicio {
         autoresDAO.actualizarAutor(autor);
     }
     
+     public List<Autores> buscarAutoresPorNombre(String nombre){
+         return autoresDAO.buscarAutoresPorNombre(nombre);
+     }
+    
     
     
 }
